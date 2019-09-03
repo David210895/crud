@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>POO</title>
+  </head>
+  <body>
+    <button class="uno">UNO</button>
+    <button class="dos">DOS</button>
+    <button class="tres">TRES</button>
+    <script>
+      //LA PROGRAMACION ORIENTADA A OBJETOS NOS AYUDARA A CREAR OBJETOS, QUE RECIBIRAR VALORES EXTERNOS
+      // Y ESTE NOS RETORNARA UN OBJETO
+      "use strict";
+
+      // function Perro(name, raza, color) {
+      //     this.name = name;
+      //     this.raza = raza;
+      //     this.color = color;
+
+      //     this.correr = function() {
+      //        return  `El perro ${this.name} corre`
+      //     }
+      // };
+
+      // const doberman = new Perro('Rufo', 'Doberman', 'marron');
+      // console.log('doberman', doberman.correr());
+
+      // const chihuahua = new Perro('Maria', 'Chichuahua', 'blanco');
+      // console.log('chihuahua', chihuahua.correr())
+
+    function Theme() {
+        this.color = 'blue';
+        this.fuente = 'arial';
+    }
+
+      function Button(element, color, message) {
+          this.element = document.querySelector(element);
+
+          console.log('atributos', this)
+
+          this.element.addEventListener('click', () => {
+              this.element.style = `background: ${color}`;
+              alert(message)
+          })
+      }
+
+      Button.prototype = new Theme();
+
+      const buton1 = new Button('.uno', 'yellow', 'Hola uno');
+      const buton2 = new Button('.dos', 'red', 'Hola dos');
+      const buton3 = new Button('.tres', 'blue', 'Hola tres');
+
+      // function Animal(fami = '') {
+      //     this.familia = fami;
+      //     this.getRaza = function() {
+      //         return `Hola mi raza es ${this.raza}`
+      //     }
+
+      //     this.getFamilia = function() {
+      //         return `Hola mi familia es ${this.familia}`
+      //     }
+      // }
+
+      // function Perro(nombre, raza, color) {
+
+      //     this.nombre = nombre;
+      //     this.raza = raza;
+      //     this.color = color;
+
+      //     this.getNombre = function () {
+      //         `Hola mi nombre es ${this.nombre}`
+      //     }
+
+      // }
+
+      // Perro.prototype = new Animal();
+
+      // function Gato(nombre, raza, color) {
+      //     this.nombre = nombre;
+      //     this.raza = raza;
+      //     this.color = color;
+      // }
+
+      // Gato.prototype = new Animal();
+
+      // const bulldog = new Perro('rufo', 'bulldog', 'marron');
+      // console.log(bulldog)
+      // bulldog.getRaza()
+
+    //   function Employee() {
+    //     this.name = "";
+    //     this.dept = "general";
+    //   }
+
+    //   function Manager() {
+    //     this.reports = [];
+    //   }
+    //   Manager.prototype = new Employee();
+
+    //   function WorkerBee() {
+    //     this.projects = [];
+    //   }
+    //   WorkerBee.prototype = new Employee();
+
+    //   function SalesPerson() {
+    //     this.dept = "sales";
+    //     this.quota = 100;
+    //   }
+    //   SalesPerson.prototype = new WorkerBee();
+
+    //   function Engineer() {
+    //     this.dept = "engineering";
+    //     this.machine = "";
+    //   }
+    //   Engineer.prototype = new WorkerBee();
+
+
+    //   let jim = new Employee();
+
+    //   console.log('jim', jim);
+
+    //   let sally = new Manager('');
+    //   console.log('sally', sally.name);
+    //   console.log('sally', sally.dept)
+
+
+    // function Animal(raza, color) {
+    //     this.raza = raza;
+    //     this.color = color;
+
+    //     this.getRaza = function() {
+    //         return `Mi raza es ${this.raza}`
+    //     }
+
+    //     this.color = function() {
+    //         return `Mi color es ${this.color}`
+    //     }
+    // }
+
+    // function Cat(raza, color) {
+    //     this.base = Animal;
+    //     this.base(raza, color);
+    //     this.say = function() {
+    //         return `miauuuu`;
+    //     }
+    // }
+
+
+    // Cat.prototype = new Animal();
+
+    // function Perro(raza, color) {
+    //     this.base = Animal;
+    //     this.base(raza, color);
+    //     this.say = function() {
+    //         return `guauu`
+    //     }
+
+    //     this.getRaza = function() {
+    //         alert('hola en perro')
+    //     }
+    // }
+
+
+    // const siames = new Cat('siames', 'marron');
+    // console.log(siames.say())
+    // console.log(siames)
+    // console.log(siames.getRaza())
+
+    // const doberman = new Perro('doberman', 'rojo')
+    // doberman.getRaza();
+
+
+    // function Animal(raza = '', color = '') {
+    //     this.raza = raza ;
+    //     this.color = color;
+    // }  
+    
+    // function Perro(raza, color) {
+    //     this.raza = raza;
+    //     this.color = color;
+
+    //     this.say = function() {
+    //         return `guauuu`
+    //     }
+    // }
+
+    // Perro.prototype = new Animal();
+
+
+
+    // const bulldog = new Perro('bulldog', 'marron')
+
+    // 'use strict'
+
+    // class Animal {
+    //     constructor(raza = '', color = '') {
+    //         this.raza = raza;
+    //         this.color = color;
+    //     }
+
+    //     getValues() {
+            
+    //     }
+    // }
+
+    // class Perro extends Animal {
+    //     constructor(name = '', color = '' , raza = '') {
+    //         super();
+    //         this.raza = raza;
+    //         this.color = color;
+    //         this.name = name;
+    //     }
+
+    //     getName() {
+    //         return `mi nombre es ${this.name}`
+    //     }
+
+    //     getData() {
+    //         return `mi raza es ${this.raza} y mi color es ${this.color} y mi nombre es ${this.name}`
+    //     }
+    // }
+
+    // const bulldog = new Perro('Joaquin', 'Negro', 'Bulldog');
+
+    // console.log(bulldog.getData())
+
+    </script>
+  </body>
+</html>

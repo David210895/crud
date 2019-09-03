@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TODO-LIST</title>
+
+    <style>
+        ul {
+            padding: 0;
+        }
+        ul button {
+            display: none;
+        }
+
+        ul li:hover button {
+            display: inline-block;
+        }
+
+        li input{ 
+            display: none;
+        }
+
+        .is-active input {
+            display: inline-block;
+        }
+
+        .is-active span {
+            display: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .line-through {
+            text-decoration: line-through;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="todo">
+      <form action="">
+        <input type="text" required />
+        <button type="submit">AGREGAR</button>
+      </form>
+
+      <ul class="js_todolist"></ul>
+    </div>
+
+    <script>
+      // ATRAPAR ELEMENTOS Y CREAR EVENTO SUBMIT
+      /*INICIO*/
+      /*
+                1) Declarar variable para el formulario y el input
+                2) Atrapar formulario e input y declararlos en las variables
+                3) Agregar evento al formulario
+            */
+      /*FIN*/
+
+      // CREAR FUNCION QUE RECIBA VALOR Y CREE ELEMENTO
+      /*INICIO*/
+      /*
+                1) DEFINIR ARGUMENTOS
+                2) CREAR ELEMENTO
+                3) AGREGAR EL VALOR AL ELEMENTO
+                4) CREAR EVENTO DE TACHADO AL ELEMENTO
+                5) CREAR EVENTO DE ELIMINAR AL ELEMENTO
+                6) CREAR EVENTO DE EDITAR AL ELEMENTO
+            */
+      /*FIN*/
+
+      const input = document.querySelector("input");
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        createItem(input.value);
+        this.reset();
+      });
+
+      function createItem(value) {
+        const list = document.querySelector(".js_todolist");
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            <form>
+                <span>${value}</span>
+                <input required value=${value} />
+                <button type="submit" class="js_edit">Editar</button>
+                <button type="button" class="js_delete">Eliminar</button>
+            </form>
+        `;
+
+        li.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let span = this.querySelector('span');
+            let input = this.querySelector('input');
+
+            li.classList.toggle('is-active');
+
+            if (li.classList.contains('is-active')) {
+                this.querySelector('.js_edit').textContent = 'Guardar';
+            } else {
+                this.querySelector('.js_edit').textContent = 'Editar'
+            }
+
+            span.textContent = input.value;
+        })
+
+        li.querySelector('.js_delete').addEventListener('click', function() {
+            li.remove();
+        })
+
+        li.querySelector('span').addEventListener('click', function() {
+            this.classList.toggle('line-through');
+        })
+
+        list.appendChild(li);
+      }
+    </script>
+  </body>
+</html>
